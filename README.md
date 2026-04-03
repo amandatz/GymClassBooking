@@ -50,6 +50,9 @@ Cada plano possui um número máximo de aulas por mês:
 ```json
 { "classTypeId": 1, "scheduledAt": "2026-06-01T07:00:00", "maxCapacity": 20 }
 ```
+
+Foram adicionada alguns tipos além daqueles enunciados no problema:
+
 **Tipos:** `1` = Cross, `2` = Funcional, `3` = Pilates, `4` = Yoga, `5` = Spinning
 
 ---
