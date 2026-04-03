@@ -1,0 +1,11 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/GymClassBooking.Api/GymClassBooking.Api.csproj" />
+    <Project Path="src/GymClassBooking.Application/GymClassBooking.Application.csproj" />
+    <Project Path="src/GymClassBooking.Domain/GymClassBooking.Domain.csproj" />
+    <Project Path="src/GymClassBooking.Infrastructure/GymClassBooking.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/GymClassBooking.UnitTests/GymClassBooking.UnitTests.csproj" />
+  </Folder>
+</Solution>
