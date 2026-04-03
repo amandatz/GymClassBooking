@@ -1,4 +1,6 @@
-﻿public record PlanType
+﻿namespace GymClassBooking.Domain.Enums;
+
+public record PlanType
 {
     public static readonly PlanType Monthly = new(1, "Monthly", 12);
     public static readonly PlanType Quarterly = new(2, "Quarterly", 20);
@@ -14,9 +16,8 @@
     public static IEnumerable<PlanType> List() =>
         [Monthly, Quarterly, Annual];
 
-    public static PlanType FromId(int id) =>
-        List().FirstOrDefault(x => x.Id == id)
-        ?? throw new InvalidOperationException($"Invalid plan id: {id}");
+    public static PlanType? FromId(int id) =>
+        List().FirstOrDefault(x => x.Id == id);
 
     public override string ToString() => Name;
 }

@@ -11,6 +11,9 @@ public static class DomainErrors
 
         public static readonly ConflictError EmailAlreadyExists =
             new("Student.EmailAlreadyExists", "A student with this email already exists.");
+
+        public static readonly ConflictError InvalidPlan =
+            new("Student.InvalidPlan", "The provided plan is invalid.");
     }
 
     public static class GymClass
@@ -23,6 +26,9 @@ public static class DomainErrors
 
         public static readonly ValidationError ScheduledInThePast =
             new("GymClass.ScheduledInThePast", "Cannot schedule a class in the past.");
+
+        public static readonly ValidationError InvalidClassType =
+            new("GymClass.InvalidClassType", "The provided class type is invalid.");
     }
 
     public static class Booking

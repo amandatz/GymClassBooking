@@ -1,4 +1,5 @@
 ﻿using GymClassBooking.Domain.Common;
+using GymClassBooking.Domain.Enums;
 using GymClassBooking.Domain.Errors;
 
 namespace GymClassBooking.Domain.Entities;
