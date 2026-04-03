@@ -33,10 +33,16 @@ public static class DomainErrors
 
     public static class Booking
     {
+        public static readonly NotFoundError NotFound =
+            new("Booking.NotFound", "Booking not found.");
+
         public static readonly ValidationError PlanLimitReached =
             new("Booking.PlanLimitReached", "The student has reached the monthly booking limit for their plan.");
 
         public static readonly ConflictError AlreadyExists =
             new("Booking.AlreadyExists", "The student is already booked for this class.");
+
+        public static readonly ValidationError CancellationWindowExpired =
+            new("Booking.CancellationWindowExpired", "Bookings cannot be cancelled less than 2 hours before the class.");
     }
 }
