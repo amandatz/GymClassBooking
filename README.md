@@ -37,6 +37,7 @@ dotnet test
 ```
 
 Cada plano possui um número máximo de aulas por mês:
+
 **Planos:** `1` = Mensal (12 aulas), `2` = Trimestral (20 aulas), `3` = Anual (30 aulas)
 
 ---
