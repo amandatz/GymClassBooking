@@ -10,7 +10,7 @@ API REST para gerenciamento de agendamentos de aulas coletivas em academias.
 
 ### Passos
 ```bash
-git clone https://github.com/seu-usuario/GymClassBooking.git
+git clone https://github.com/amandatz/GymClassBooking.git
 cd GymClassBooking
 dotnet restore
 dotnet run --project src/GymClassBooking.Api
@@ -25,7 +25,7 @@ Acesse a documentação em: http://localhost:5114/scalar/v1
 dotnet test
 ```
 
-## 📌 Endpoints
+## Endpoints
 
 ### Alunos
 | Método | Rota | Descrição |
@@ -37,6 +37,7 @@ dotnet test
 ```
 
 Cada plano possui um número máximo de aulas por mês:
+
 **Planos:** `1` = Mensal (12 aulas), `2` = Trimestral (20 aulas), `3` = Anual (30 aulas)
 
 ---
@@ -49,6 +50,9 @@ Cada plano possui um número máximo de aulas por mês:
 ```json
 { "classTypeId": 1, "scheduledAt": "2026-06-01T07:00:00", "maxCapacity": 20 }
 ```
+
+Foram adicionada alguns tipos além daqueles enunciados no problema:
+
 **Tipos:** `1` = Cross, `2` = Funcional, `3` = Pilates, `4` = Yoga, `5` = Spinning
 
 ---
