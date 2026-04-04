@@ -25,7 +25,7 @@ Acesse a documentação em: http://localhost:5114/scalar/v1
 dotnet test
 ```
 
-## 📌 Endpoints
+## Endpoints
 
 ### Alunos
 | Método | Rota | Descrição |
