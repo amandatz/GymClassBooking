@@ -1,6 +1,7 @@
-﻿using GymClassBooking.Application.DTOs.Requests;
+﻿using GymClassBooking.Api.Extensions;
+using GymClassBooking.Application.DTOs.Requests;
+using GymClassBooking.Application.DTOs.Responses;
 using GymClassBooking.Application.UseCases.Students;
-using GymClassBooking.Api.Extensions;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GymClassBooking.Api.Controllers;
@@ -11,11 +12,21 @@ public sealed class StudentsController(
     CreateStudent createStudent,
     GetAllStudents getAllStudents) : ControllerBase
 {
+    /// <summary>Lists all registered students.</summary>
     [HttpGet]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IReadOnlyList<StudentResponse>))]
     public async Task<IActionResult> GetAll(CancellationToken ct) =>
         Ok(await getAllStudents.ExecuteAsync(ct));
 
+    /// <summary>Creates a new student.</summary>
+    /// <remarks>
+    /// Returns 409 if email is already registered.
+    /// Returns 400 if plan ID is invalid.
+    /// </remarks>
     [HttpPost]
+    [ProducesResponseType(StatusCodes.Status201Created, Type = typeof(StudentResponse))]
+    [ProducesResponseType(StatusCodes.Status409Conflict)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> Create(
         [FromBody] CreateStudentRequest request,
         CancellationToken ct)

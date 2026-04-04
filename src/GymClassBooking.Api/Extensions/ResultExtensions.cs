@@ -7,7 +7,7 @@ public static class ResultExtensions
 {
     public static IActionResult ToActionResult(this Result result)
     {
-        if (result.IsSuccess) return new OkResult();
+        if (result.IsSuccess) return new NoContentResult();
 
         return result.Error switch
         {
