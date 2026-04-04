@@ -20,6 +20,8 @@ public static class DependencyInjection
         services.AddDbContext<AppDbContext>(options =>
             options.UseSqlite(configuration.GetConnectionString("DefaultConnection")));
 
+        services.AddSingleton<IDateTimeProvider, DateTimeProvider>();
+
         // Repositories
         services.AddScoped<IStudentRepository, StudentRepository>();
         services.AddScoped<IGymClassRepository, GymClassRepository>();

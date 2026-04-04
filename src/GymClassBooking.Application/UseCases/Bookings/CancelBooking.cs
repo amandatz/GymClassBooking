@@ -7,10 +7,9 @@ namespace GymClassBooking.Application.UseCases.Bookings;
 public sealed class CancelBooking(
     IBookingRepository bookingRepository,
     IGymClassRepository gymClassRepository,
-    IUnitOfWork unitOfWork)
+    IUnitOfWork unitOfWork,
+    IDateTimeProvider dateTimeProvider)
 {
-    private const int CancellationWindowHours = 2;
-
     public async Task<Result> ExecuteAsync(Guid bookingId, CancellationToken ct = default)
     {
         var booking = await bookingRepository.GetByIdAsync(bookingId, ct);
@@ -21,9 +20,8 @@ public sealed class CancelBooking(
         if (gymClass is null)
             return Result.Failure(DomainErrors.GymClass.NotFound);
 
-        var hoursUntilClass = (gymClass.ScheduledAt - DateTime.UtcNow).TotalHours;
-        if (hoursUntilClass < CancellationWindowHours)
-            return Result.Failure(DomainErrors.Booking.CancellationWindowExpired);
+        if (gymClass.ScheduledAt <= dateTimeProvider.UtcNow)
+            return Result.Failure(DomainErrors.Booking.ClassAlreadyStarted);
 
         gymClass.Unenroll();
 

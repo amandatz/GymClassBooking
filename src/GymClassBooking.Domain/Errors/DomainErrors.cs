@@ -42,7 +42,7 @@ public static class DomainErrors
         public static readonly ConflictError AlreadyExists =
             new("Booking.AlreadyExists", "The student is already booked for this class.");
 
-        public static readonly ValidationError CancellationWindowExpired =
-            new("Booking.CancellationWindowExpired", "Bookings cannot be cancelled less than 2 hours before the class.");
+        public static readonly ValidationError ClassAlreadyStarted =
+            new("Booking.ClassAlreadyStarted", "Cannot cancel a booking for a class that has already started.");
     }
 }
