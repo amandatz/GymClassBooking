@@ -1,5 +1,5 @@
 ﻿using GymClassBooking.Api.Extensions;
-using GymClassBooking.Application.DTOs.Responses;
+using GymClassBooking.Application.DTOs.Requests;
 using GymClassBooking.Application.UseCases.Reports;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,17 +13,18 @@ public sealed class ReportsController(GetStudentReport getStudentReport) : Contr
     /// <remarks>
     /// Returns total bookings for the month, plan limit and most frequent class types.
     /// Returns 404 if student is not found.
+    /// Returns 400 if month or year are invalid.
     /// </remarks>
     [HttpGet("students/{id:guid}")]
-    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(StudentReportResponse))]
-    [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> GetStudentReport(
-        Guid id,
-        [FromQuery] int month,
-        [FromQuery] int year,
-        CancellationToken ct)
+    Guid id,
+    [FromQuery] StudentReportRequest request,
+    CancellationToken ct)
     {
-        var result = await getStudentReport.ExecuteAsync(id, month, year, ct);
+        if (!ModelState.IsValid)
+            return BadRequest(ModelState);
+
+        var result = await getStudentReport.ExecuteAsync(id, request.Month!.Value, request.Year!.Value, ct);
         return result.IsSuccess
             ? Ok(result.Value)
             : result.ToActionResult();

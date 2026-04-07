@@ -1,5 +1,4 @@
-﻿using GymClassBooking.Domain.Errors;
-using System.Diagnostics.CodeAnalysis;
+﻿using System.Diagnostics.CodeAnalysis;
 
 namespace GymClassBooking.Domain.Common;
 

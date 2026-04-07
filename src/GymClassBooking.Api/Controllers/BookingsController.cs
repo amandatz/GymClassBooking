@@ -43,7 +43,7 @@ public sealed class BookingsController(
     /// <summary>Cancels an existing booking.</summary>
     /// <remarks>
     /// Returns 404 if booking is not found.
-    /// Returns 400 if the class starts in less than 2 hours.
+    /// Returns 400 if the class already started.
     /// </remarks>
     [HttpDelete("{id:guid}")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]

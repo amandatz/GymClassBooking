@@ -22,13 +22,20 @@ public static class ResultExtensions
     {
         return result.IsSuccess
             ? new OkObjectResult(result.Value)
-            : result.ToActionResult();
+            : ((Result)result).ToActionResult();
     }
 
-    private static ProblemDetails CreateProblemDetails(Error error, int status) => new()
+    private static ValidationProblemDetails CreateProblemDetails(Error error, int status)
     {
-        Title = error.Code,
-        Detail = error.Message,
-        Status = status
-    };
+        var errors = new Dictionary<string, string[]>
+                {
+                    { error.Code.Split('.')[0].ToLower(), [error.Message] }
+                };
+
+        return new ValidationProblemDetails(errors)
+        {
+            Title = error.Code,
+            Status = status
+        };
+    }
 }
