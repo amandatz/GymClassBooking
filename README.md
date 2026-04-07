@@ -87,10 +87,10 @@ Os testes cobrem regras de negócio do domínio e os principais casos de uso.
 | `Enroll_WhenClassIsFull_ShouldFail` | Capacidade máxima da aula |
 | `Enroll_WhenClassHasSpots_ShouldSucceed` | Contador de vagas |
 | `Create_WhenScheduledInThePast_ShouldFail` | Validação de data |
-| `Execute_WhenPlanLimitReached` | Orquestração do use case CreateBooking |
-| `Execute_WhenClassAlreadyStarted` | Regra de cancelamento com clock abstraction |
+| `Execute_WhenPlanLimitReached` | Fluxo completo do agendamento |
+| `Execute_WhenClassAlreadyStarted` | Regra de cancelamento |
 
-Os testes cobrem apenas alguns cenários, mas existe espaço para expandir, como testes de integração validando as transações do banco, cobertura dos casos de erro nos repositórios e testes de concorrência simulando acessos simultâneos à mesma vaga.
+Os testes cobrem apenas alguns cenários, mas existe espaço para expansão, como testes de integração validando as transações do banco, cobertura dos casos de erro nos repositórios e testes de concorrência simulando acessos simultâneos à mesma vaga.
 
 ---
 
