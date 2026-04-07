@@ -12,7 +12,6 @@ API REST para gerenciamento de agendamentos de aulas coletivas em academias.
 ```bash
 git clone https://github.com/amandatz/GymClassBooking.git
 cd GymClassBooking
-dotnet restore
 dotnet run --project src/GymClassBooking.Api
 ```
 
